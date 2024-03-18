@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import List from './_components/List'
 
 export const metadata: Metadata = {
   title: '这是列表页',
@@ -7,7 +8,12 @@ export const metadata: Metadata = {
 }
 
 const ListPage = () => {
-  return <div>ListPage</div>
+  return (
+    <div>
+      ListPage
+      <List />
+    </div>
+  )
 }
 
 export default ListPage
