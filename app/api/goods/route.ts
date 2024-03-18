@@ -1,18 +1,28 @@
-import { NextResponse } from 'next/server'
+import { prisma } from '@/app/db'
+import { NextRequest, NextResponse } from 'next/server'
 
-export const GET = () => {
+export const GET = async () => {
+  // 查询数据，根据创建时间倒叙排列
+  const data = await prisma.goods.findMany({
+    orderBy: {
+      createdAt: 'desc'
+    }
+  })
   return NextResponse.json({
     success: true,
-    errorMessage: '',
-    data: [
-      {
-        id: 1,
-        name: 'hyy'
-      },
-      {
-        id: 2,
-        name: 'zaq'
-      }
-    ]
+    errorMessage: '获取数据成功',
+    data
+  })
+}
+
+export const POST = async (req: NextRequest) => {
+  const data = await req.json() // 获取请求体中传递的json数据
+  await prisma.goods.create({
+    data
+  })
+  return NextResponse.json({
+    success: true,
+    errorMessage: '创建成功',
+    data: {}
   })
 }
