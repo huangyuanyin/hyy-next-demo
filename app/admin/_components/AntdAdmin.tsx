@@ -35,9 +35,9 @@ const AntdAdmin = ({ children }: any) => {
               label: '用户信息'
             },
             {
-              key: '3',
+              key: '/admin/articles',
               icon: <UploadOutlined />,
-              label: 'nav 3'
+              label: '文章管理'
             }
           ]}
         />
